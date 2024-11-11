@@ -1,0 +1,77 @@
+services:
+   ioquake3_ffa:
+    build:
+      context: .
+    container_name: ioquake3_ffa
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - MOTD
+      - RCON_PASS
+      - EXTRA_ARGS
+      - GAME_CFG=ffa.cfg
+    volumes:
+      - "${BASEQ3_DIR}:/quake/baseq3/:rw"
+      - "${OSP_DIR}:/quake/osp/:rw"
+      - "${CONFIG_DIR}:/config:rw"
+    ports:
+      - "27960:${PORT}"
+      
+   ioquake3_tdm:
+    build:
+      context: .
+    container_name: ioquake3_tdm
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - MOTD
+      - RCON_PASS
+      - EXTRA_ARGS
+      - GAME_CFG=tdm.cfg
+    volumes:
+      - "${BASEQ3_DIR}:/quake/baseq3/:rw"
+      - "${OSP_DIR}:/quake/osp/:rw"
+      - "${CONFIG_DIR}:/config:rw"
+    ports:
+      - "27961:${PORT}"
+
+   ioquake3_ctf:
+    build:
+      context: .
+    container_name: ioquake3_ctf
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - MOTD
+      - RCON_PASS
+      - EXTRA_ARGS
+      - GAME_CFG=ctf.cfg
+    volumes:
+      - "${BASEQ3_DIR}:/quake/baseq3/:rw"
+      - "${OSP_DIR}:/quake/osp/:rw"
+      - "${CONFIG_DIR}:/config:rw"
+    ports:
+      - "27962:${PORT}"
+
+   ioquake3_ist:
+    build:
+      context: .
+    container_name: ioquake3_ist
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - MOTD
+      - RCON_PASS
+      - EXTRA_ARGS
+      - GAME_CFG=ist.cfg
+    volumes:
+      - "${BASEQ3_DIR}:/quake/baseq3/:rw"
+      - "${OSP_DIR}:/quake/osp/:rw"
+      - "${CONFIG_DIR}:/config:rw"
+    ports:
+      - "27963:${PORT}"
+
